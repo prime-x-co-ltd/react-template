@@ -1,5 +1,6 @@
 import * as React from 'react'
 
-export const Title: React.FC = () => {
-	return <h1>Hello, React</h1>
+type Props = { name: string }
+export const Title: React.FC<Props> = ({ name }) => {
+	return <h1>{name}</h1>
 }
