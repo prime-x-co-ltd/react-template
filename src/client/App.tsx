@@ -1,18 +1,16 @@
 import * as React from 'react'
+import { theme } from './theme'
+import { ThemeProvider } from '@material-ui/core/styles'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import { Nav } from './components/Nav'
-import { TopPage } from './pages/TopPage'
-import { AboutPage } from './pages/AboutPage'
+import { SideBar } from './components/SideBar'
+import { Header } from './components/Header'
 
 export const App: React.FC = () => {
 	return (
-		<Router>
-			<Nav />
-			<Switch>
-				<Route exact path="/" component={TopPage} />
-				<Route path="/About" component={AboutPage} />
-			</Switch>
-		</Router>
+		<ThemeProvider theme={theme}>
+			<Header title="Your App Name" />
+			<SideBar />
+		</ThemeProvider>
 	)
 }
