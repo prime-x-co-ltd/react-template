@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { TopPage } from './pages/TopPage'
+import { DashBoard } from './pages/DashBoard'
 import { SearchPage } from './pages/SearchPage'
 import { UploadPage } from './pages/UploadPage'
 import { ConfigPage } from './pages/ConfigPage'
@@ -13,25 +13,29 @@ import SettingsIcon from '@material-ui/icons/Settings'
 export const routes = [
 	{
 		path: '/',
-		name: 'Dashboard',
-		component: TopPage,
+		name: 'Top',
+		exact: true,
+		component: DashBoard,
 		icon: () => <DashboardIcon />,
 	},
 	{
 		path: '/search',
 		name: 'Search',
+		exact: true,
 		component: SearchPage,
 		icon: () => <SearchIcon />,
 	},
 	{
 		path: '/upload',
 		name: 'Upload',
+		exact: true,
 		component: UploadPage,
 		icon: () => <CloudUploadIcon />,
 	},
 	{
 		path: '/config',
 		name: 'Config',
+		exact: true,
 		component: ConfigPage,
 		icon: () => <SettingsIcon />,
 	},
