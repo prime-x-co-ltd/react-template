@@ -9,6 +9,10 @@ import {
 	ValueFormatterParams,
 } from '@material-ui/data-grid'
 
+import IconButton from '@material-ui/core/IconButton'
+import EditIcon from '@material-ui/icons/Edit'
+import DeleteIcon from '@material-ui/icons/Delete'
+
 const useStyles = makeStyles((theme: Theme) => ({
 	table: {
 		// maxWidth: 800,
@@ -20,51 +24,66 @@ const useStyles = makeStyles((theme: Theme) => ({
 	},
 }))
 
-const columns: ColDef[] = [
-	{ field: 'id', headerName: 'ID', width: 100 },
-	{
-		field: 'image',
-		headerName: 'Preview',
-		width: 150,
-		renderCell: (params: ValueFormatterParams) => (
-			<img
-				src={params.value as string}
-				style={{ maxWidth: 100, maxHeight: 100 }}
-				alt="NO IMAGE"
-			/>
-		),
-	},
-	{ field: 'imageName', headerName: 'Name', width: 130 },
-	{ field: 'size', headerName: 'Size [bytes]', type: 'number', width: 130 },
-	{
-		field: 'width',
-		headerName: 'Width [px]',
-		type: 'number',
-		width: 130,
-	},
-	{
-		field: 'height',
-		headerName: 'Height [px]',
-		type: 'number',
-		width: 130,
-	},
-	{
-		field: 'imageUrl',
-		headerName: 'URL',
-		width: 250,
-		renderCell: (params: ValueFormatterParams) => (
-			<a
-				href={params.value as string}
-				target="_brank"
-				style={{ color: 'inherit' }}>
-				{params.value}
-			</a>
-		),
-	},
-]
-
 export const GridTable = () => {
 	const classes = useStyles()
+	const handleEdit = (event: React.MouseEvent) => {
+		console.log(event)
+		return
+	}
+	const handleDelete = (event: React.MouseEvent) => {
+		console.log(event)
+		return
+	}
+
+	/**Columns */
+	const columns: ColDef[] = [
+		{ field: 'id', headerName: 'ID', width: 100 },
+		{
+			field: 'image',
+			headerName: 'Preview',
+			width: 150,
+			renderCell: (params: ValueFormatterParams) => (
+				<img
+					src={params.value as string}
+					style={{ maxWidth: 100, maxHeight: 100 }}
+					alt="NO IMAGE"
+				/>
+			),
+		},
+		{ field: 'imageName', headerName: 'Name', width: 130 },
+		{
+			field: 'size',
+			headerName: 'Size [bytes]',
+			type: 'number',
+			width: 130,
+		},
+		{
+			field: 'width',
+			headerName: 'Width [px]',
+			type: 'number',
+			width: 130,
+		},
+		{
+			field: 'height',
+			headerName: 'Height [px]',
+			type: 'number',
+			width: 130,
+		},
+		{
+			field: 'imageUrl',
+			headerName: 'URL',
+			width: 400,
+			renderCell: (params: ValueFormatterParams) => (
+				<a
+					href={params.value as string}
+					target="_brank"
+					style={{ color: 'inherit' }}>
+					{params.value}
+				</a>
+			),
+		},
+	]
+	/**Rows */
 	const [rows, setRows] = React.useState([
 		{
 			id: 1,
@@ -116,15 +135,24 @@ export const GridTable = () => {
 		setRows(rows)
 	}
 	return (
-		<div style={{ height: 400, width: '100%' }}>
-			<DataGrid
-				className={classes.table}
-				rows={rows}
-				columns={columns}
-				pageSize={5}
-				checkboxSelection
-				onRowSelected={handleClickRow}
-			/>
-		</div>
+		<>
+			<IconButton>
+				<EditIcon />
+			</IconButton>
+			<IconButton>
+				<DeleteIcon />
+			</IconButton>
+			<div style={{ height: 400, width: '100%' }}>
+				<DataGrid
+					className={classes.table}
+					rows={rows}
+					columns={columns}
+					pageSize={5}
+					// checkboxSelection
+					disableMultipleSelection={true}
+					onRowSelected={handleClickRow}
+				/>
+			</div>
+		</>
 	)
 }

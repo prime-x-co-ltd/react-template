@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { getRecords } from '../backend/api'
 
 export type State = {
 	[key: string]: string
@@ -33,6 +34,16 @@ const initState: State = {
 
 export const AppContextProvider: React.FC = ({ children }) => {
 	const [state, dispatch] = React.useReducer(reducer, initState)
+
+	React.useEffect(() => {
+		const fetchData = async () => {
+			const resp = await getRecords()
+			console.log(resp)
+			return
+		}
+		fetchData()
+	}, [])
+
 	return (
 		<AppContext.Provider value={{ state, dispatch }}>
 			{children}

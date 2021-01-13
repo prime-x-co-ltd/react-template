@@ -8,9 +8,14 @@
 		"build:dev": "webpack --watch",
 		"build:prod": "webpack",
 		"deploy": "gh-pages -d dist",
-		"lint": "eslint src"
+		"lint": "eslint src",
+		"ts": "./node_modules/.bin/ts-node-dev --respawn src/backend/api.ts"
 	},
 	"dependencies": {
+		"@devexpress/dx-react-core": "^2.7.4",
+		"@devexpress/dx-react-grid": "^2.7.4",
+		"@devexpress/dx-react-grid-material-ui": "^2.7.4",
+		"@kintone/rest-api-client": "^1.7.2",
 		"clsx": "^1.1.1",
 		"react": "^16.14.0",
 		"react-dom": "^16.14.0",
@@ -38,6 +43,7 @@
 		"babel-loader": "^8.2.2",
 		"css-loader": "^5.0.1",
 		"date-fns": "^2.16.1",
+		"dotenv": "^8.2.0",
 		"dotenv-webpack": "^6.0.0",
 		"eslint": "^7.15.0",
 		"eslint-config-prettier": "^7.0.0",

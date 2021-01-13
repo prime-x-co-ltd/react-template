@@ -1,6 +1,10 @@
 const path = require('path')
-const Dotenv = require('dotenv-webpack')
+// const Dotenv = require('dotenv-webpack')
+const webpack = require('webpack')
+const dotenv = require('dotenv')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+const env = dotenv.config().parsed
 
 module.exports = {
 	mode: 'production',
@@ -60,6 +64,10 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, 'public/index.html'),
 		}),
-		new Dotenv(),
+		// new Dotenv(),
+		/**dotenv-webpackより実用的？？ */
+		new webpack.DefinePlugin({
+			'process.env': JSON.stringify(env),
+		}),
 	],
 }

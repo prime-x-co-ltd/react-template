@@ -30,8 +30,8 @@ export const SearchPage: React.FC = () => {
 				表示項目は要相談
 			</Typography>
 			<ul>
-				<li>画像プレビュー</li>
-				<li>変更・削除アクション</li>
+				<li>複数選択は認めない？（使い方がイメージできない）</li>
+				<li>変更・削除アクション（フロートにする？）</li>
 			</ul>
 			<GridTable />
 		</div>
