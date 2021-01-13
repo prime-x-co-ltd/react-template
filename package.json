@@ -9,7 +9,10 @@
 		"build:prod": "webpack",
 		"deploy": "gh-pages -d dist",
 		"lint": "eslint src",
-		"ts": "./node_modules/.bin/ts-node-dev --respawn src/backend/api.ts"
+		"ts": "./node_modules/.bin/ts-node-dev --respawn src/backend/api.ts",
+		"local": "run-p local:*",
+		"local:start": "npm run start",
+		"local:stub": "cd src/backend/server; npm run start"
 	},
 	"dependencies": {
 		"@devexpress/dx-react-core": "^2.7.4",

@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { getRecords } from '../backend/api'
 
 export type State = {
 	[key: string]: string
@@ -37,8 +36,8 @@ export const AppContextProvider: React.FC = ({ children }) => {
 
 	React.useEffect(() => {
 		const fetchData = async () => {
-			const resp = await getRecords()
-			console.log(resp)
+			const resp = await fetch('http://localhost:3000/api/v1/records')
+			console.log(resp.json())
 			return
 		}
 		fetchData()
