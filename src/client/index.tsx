@@ -5,12 +5,15 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import { theme } from './theme'
 import { App } from './App'
 import { AppContextProvider } from './AppProvider'
+import { APIContextProvider } from './APIProvider'
 
 ReactDOM.render(
 	<ThemeProvider theme={theme}>
-		<AppContextProvider>
-			<App />
-		</AppContextProvider>
+		<APIContextProvider>
+			<AppContextProvider>
+				<App />
+			</AppContextProvider>
+		</APIContextProvider>
 	</ThemeProvider>,
 	document.querySelector('#app')
 )

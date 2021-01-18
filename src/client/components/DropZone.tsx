@@ -1,8 +1,11 @@
 import * as React from 'react'
 import { Theme, makeStyles } from '@material-ui/core/styles'
-
+/**HTTP Client */
+import axios from 'axios'
+/**Context */
+import { useAppContext } from '../AppProvider'
+/**External Components */
 import { UploadURL } from './UploadURL'
-
 /**Dropzone */
 import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone, {
@@ -38,7 +41,6 @@ const Preview = ({
 	fileWithMeta,
 }: IPreviewProps) => {
 	const classes = useStyles()
-	console.log('meta', meta)
 	const { previewUrl, name, size, width, height, percent } = meta
 	const { remove } = fileWithMeta
 
@@ -83,6 +85,8 @@ const Preview = ({
 }
 
 export const DropZone: React.FC = () => {
+	const { dispatch } = useAppContext()
+
 	const getUploadParams: IDropzoneProps['getUploadParams'] = () => {
 		return { url: 'https://httpbin.org/post' }
 	}
@@ -93,7 +97,24 @@ export const DropZone: React.FC = () => {
 		console.log(status, meta)
 	}
 	const handleSubmit: IDropzoneProps['onSubmit'] = (files, allFiles) => {
-		console.log(files.map((f) => f.meta))
+		const upData = async () => {
+			const params = new FormData()
+			params.append('uploadFile', files[0].file)
+
+			const headers = {
+				accept: 'application/json',
+				'Content-Type': 'multipart/form-data',
+			}
+
+			const res = await axios.post(
+				'https://localhost:3000/api/v1/upload',
+				params,
+				{ headers }
+			)
+			console.log(res)
+			dispatch({ type: 'uploadUrl', payload: res.data.url })
+		}
+		upData()
 		allFiles.forEach((f) => f.remove())
 	}
 	return (
@@ -104,8 +125,8 @@ export const DropZone: React.FC = () => {
 				onChangeStatus={handleChangeStatus}
 				onSubmit={handleSubmit}
 				accept="image/*,audio/*,video/*"
-				// maxFiles={1}
-				// multiple={false}
+				maxFiles={1}
+				multiple={false}
 				canRemove={true}
 				inputContent="Drag Files to here ..."
 				submitButtonContent="UPLOAD"

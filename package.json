@@ -4,7 +4,7 @@
 	"description": "一応完成版を目指して作る。。",
 	"main": "index.js",
 	"scripts": {
-		"start": "webpack serve --https",
+		"start": "webpack serve",
 		"build:dev": "webpack --watch",
 		"build:prod": "webpack",
 		"deploy": "gh-pages -d dist",
@@ -12,13 +12,15 @@
 		"ts": "./node_modules/.bin/ts-node-dev --respawn src/backend/api.ts",
 		"local": "run-p local:*",
 		"local:start": "npm run start",
-		"local:stub": "cd src/backend/server; npm run start"
+		"stub": "cd src/backend/server; npm run dev",
+		"local:server": "cd src/backend/server-template; npm run dev"
 	},
 	"dependencies": {
 		"@devexpress/dx-react-core": "^2.7.4",
 		"@devexpress/dx-react-grid": "^2.7.4",
 		"@devexpress/dx-react-grid-material-ui": "^2.7.4",
 		"@kintone/rest-api-client": "^1.7.2",
+		"axios": "^0.21.1",
 		"clsx": "^1.1.1",
 		"react": "^16.14.0",
 		"react-dom": "^16.14.0",

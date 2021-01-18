@@ -30,6 +30,11 @@ export const UploadPage: React.FC = () => {
 				ドラッグ＆ドロップ or
 				ファイル選択ダイアログからファイルを取り込む（項目は要相談）
 			</Typography>
+			<ul>
+				<li>画像URLを返す</li>
+				<li>S3に階層構造は必要？企業名/PJ名/キャンペーン名/...</li>
+				<li>↑動的にディレクトリ作らないと。。</li>
+			</ul>
 			<DropZone />
 		</div>
 	)

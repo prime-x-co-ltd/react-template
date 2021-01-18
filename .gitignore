@@ -105,3 +105,6 @@ dist
 
 # Express dist
 src/backend/express-es6-rest-api/dist/
+
+# Auth
+.accesskey.json

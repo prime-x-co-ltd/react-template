@@ -2,11 +2,13 @@ import * as React from 'react'
 
 export type State = {
 	[key: string]: string
+	pjCode: string
+	pjName: string
 	compayName: string
-	projectName: string
-	projectCode: string
-	wordForSale: string
-	imgForSale: string
+	campaignName: string
+	tagWord: string
+	tagImage: string
+	uploadUrl: string
 }
 export type Action = { type: string; payload: string }
 
@@ -24,24 +26,19 @@ const AppContext = React.createContext({} as AppContextType)
 export const useAppContext = () => React.useContext(AppContext)
 
 const initState: State = {
+	pjCode: '',
+	pjName: '',
 	compayName: '',
-	projectName: '',
-	projectCode: '',
-	wordForSale: '',
-	imgForSale: '',
+	campaignName: '',
+	tagWord: '',
+	tagImage: '',
+	uploadUrl: '',
 }
+
+/**Data-Cleansing */
 
 export const AppContextProvider: React.FC = ({ children }) => {
 	const [state, dispatch] = React.useReducer(reducer, initState)
-
-	React.useEffect(() => {
-		const fetchData = async () => {
-			const resp = await fetch('http://localhost:3000/api/v1/records')
-			console.log(resp.json())
-			return
-		}
-		fetchData()
-	}, [])
 
 	return (
 		<AppContext.Provider value={{ state, dispatch }}>

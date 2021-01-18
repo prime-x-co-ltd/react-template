@@ -1,6 +1,9 @@
 import * as React from 'react'
 import { Theme, makeStyles, withStyles } from '@material-ui/core/styles'
 
+/**Context */
+import { useAppContext } from '../AppProvider'
+
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import TextField from '@material-ui/core/TextField'
 import IconButton from '@material-ui/core/IconButton'
@@ -26,9 +29,7 @@ const LightTooltip = withStyles((theme: Theme) => ({
 
 export const UploadURL: React.FC = () => {
 	const classes = useStyles()
-	const [url, setUrl] = React.useState(
-		'https://sep-px-ad-img.s3-ap-northeast-1.amazonaws.com/nigawa236_G1_1200x1200(fb)_191003.jpg'
-	)
+	const { state } = useAppContext()
 	const [open, setOpen] = React.useState(false)
 	const handleCloseTip = () => setOpen(false)
 	const handleClickTip = () => setOpen(true)
@@ -38,7 +39,7 @@ export const UploadURL: React.FC = () => {
 			id="upload-url"
 			label="URL"
 			className={classes.url}
-			defaultValue={url}
+			value={state.uploadUrl}
 			InputProps={{
 				readOnly: true,
 				startAdornment: (
@@ -50,7 +51,7 @@ export const UploadURL: React.FC = () => {
 							disableHoverListener
 							placement="left"
 							title="Copied!">
-							<CopyToClipboard text={url}>
+							<CopyToClipboard text={state.uploadUrl}>
 								<IconButton onClick={handleClickTip}>
 									<FileCopyIcon />
 								</IconButton>

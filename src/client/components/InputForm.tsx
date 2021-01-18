@@ -4,8 +4,7 @@ import { Theme, makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 
-import { data } from '../sample_data'
-import { SelectBox } from '../components/SelectBox'
+import { SelectProjectCode, SelectTag } from '../components/SelectBox'
 
 const useStyles = makeStyles((theme: Theme) => ({
 	divider: {
@@ -17,18 +16,21 @@ export const InputForm: React.FC = () => {
 	const classes = useStyles()
 	return (
 		<>
-			<Typography paragraph gutterBottom>
-				区分 | 上位区分を設定すると、下位区分が絞り込まれるようにする
-			</Typography>
-			<SelectBox name="companyName" options={data.comparyName} />
-			<SelectBox name="projectCode" options={data.projectCode} />
-			<SelectBox name="projectName" options={data.projectName} />
-			<Typography paragraph gutterBottom>
-				メタ情報 |
-				エンドユーザが、設定画面からカスタマイズ出来るようにする（保守が面倒くさそう。。）
-			</Typography>
-			<SelectBox name="wordForSale" options={data.wordForSale} />
-			<SelectBox name="imgForSale" options={data.imgForSale} />
+			<ul>
+				<li>PJコードで絞り込む（PJ名、企業名は自動入力で編集不可</li>
+				<li>キャンペーン名は手動？どこから持ってくるの？</li>
+				<li>
+					1キャンペーン=1掲載案？なので、キャンペーン単位で絞り込みたい
+				</li>
+				<li>そうなるとキャンペーン名が重要。手動だとブレそう。。</li>
+			</ul>
+			<SelectProjectCode />
+			<Divider />
+			<ul>
+				<li>タグ情報の詳細早く出して</li>
+				<li>画像1枚ごとにタグつけるのめんどくさくない？</li>
+			</ul>
+			<SelectTag />
 		</>
 	)
 }

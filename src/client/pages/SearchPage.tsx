@@ -30,7 +30,8 @@ export const SearchPage: React.FC = () => {
 				表示項目は要相談
 			</Typography>
 			<ul>
-				<li>複数選択は認めない？（使い方がイメージできない）</li>
+				<li>キャンペーン（=掲載案）単位で絞り込めないと。。</li>
+				<li>画像一括DL</li>
 				<li>変更・削除アクション（フロートにする？）</li>
 			</ul>
 			<GridTable />

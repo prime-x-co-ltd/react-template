@@ -1,47 +1,5 @@
 export const data = {
-	comparyName: [
-		{
-			label: '野村不動産',
-			value: '0001',
-		},
-		{
-			label: '東急不動産',
-			value: '0002',
-		},
-		{
-			label: '阪急阪神不動産',
-			value: '0003',
-		},
-	],
-	projectName: [
-		{
-			label: 'プラウド東雲',
-			value: '0001',
-		},
-		{
-			label: 'プラウド渋谷本町',
-			value: '0002',
-		},
-		{
-			label: 'プラウド代々木上原',
-			value: '0003',
-		},
-	],
-	projectCode: [
-		{
-			label: 'PJ1500001',
-			value: 'PJ1500001',
-		},
-		{
-			label: 'PJ1500002',
-			value: 'PJ1500002',
-		},
-		{
-			label: 'PJ1500003',
-			value: 'PJ1500003',
-		},
-	],
-	wordForSale: [
+	tagWord: [
 		{
 			label: '返済例',
 			value: '0001',
@@ -55,7 +13,7 @@ export const data = {
 			value: '0003',
 		},
 	],
-	imgForSale: [
+	tagImage: [
 		{
 			label: 'NO1',
 			value: '0001',
